@@ -39,3 +39,13 @@ extension Stack: ExpressibleByArrayLiteral{
         storage = elements
     }
 }
+
+extension Stack: CustomDebugStringConvertible {
+    public var debugDescription: String {
+        """
+        --- TOP ---
+        \(storage.map { "\($0)" }.reversed().joined(separator: "\n"))
+        -----------
+        """
+    }
+}
