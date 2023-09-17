@@ -26,3 +26,16 @@ public struct Stack<Element> {
     /// True if the stack is empty.
     public var isEmpty: Bool { peek() == nil }
 }
+
+extension Stack: ExpressibleByArrayLiteral{
+    
+    /// Initializing a stack from an array.
+    public init(from array: [Element]) {
+        storage = array
+    }
+    
+    /// Initializing a stack from an array literal.
+    public init(arrayLiteral elements: Element...) {
+        storage = elements
+    }
+}

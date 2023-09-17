@@ -12,6 +12,7 @@ final class StackTests: XCTestCase {
     
     override func tearDownWithError() throws {
         sut = nil
+        try super.tearDownWithError()
     }
     
     func testStack_isEmpty() {
@@ -33,5 +34,23 @@ final class StackTests: XCTestCase {
         XCTAssertEqual(popped, 1)
         XCTAssertNil(sut.pop())
         XCTAssertTrue(sut.isEmpty)
+    }
+    
+    func testStack_initFromArray() {
+        var stack = Stack(from: ["a","b","c"])
+        XCTAssertFalse(stack.isEmpty)
+        XCTAssertEqual(stack.pop()!, "c")
+        XCTAssertEqual(stack.pop()!, "b")
+        XCTAssertEqual(stack.pop()!, "a")
+        XCTAssertTrue(stack.isEmpty)
+    }
+    
+    func testStack_initFromArrayLiterals() {
+        var stack: Stack = ["a","b","c"]
+        XCTAssertFalse(stack.isEmpty)
+        XCTAssertEqual(stack.pop()!, "c")
+        XCTAssertEqual(stack.pop()!, "b")
+        XCTAssertEqual(stack.pop()!, "a")
+        XCTAssertTrue(stack.isEmpty)
     }
 }
